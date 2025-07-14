@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noticias Recientes - ODAPAS Chalco</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .header {
+      background-color: #003366; /* Azul marino */
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .news-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .news-block {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .news-img {
+      flex: 1 1 300px;
+      max-height: 220px;
+      overflow: hidden;
+    }
+
+    .news-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-text {
+      flex: 2 1 400px;
+      padding: 20px;
+    }
+
+    .news-text h4 {
+      color: #003366; /* Azul marino */
+      margin-bottom: 10px;
+    }
+
+    .btn-back {
+      background-color: #007BFF; /* Azul claro */
+      color: white;
+      font-weight: bold;
+      border: none;
+    }
+
+    .btn-back:hover {
+      background-color: #0056b3; /* Azul más oscuro */
+    }
+
+    footer {
+      background-color: #003366; /* Azul marino */
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .news-block {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Noticias Recientes</h1>
+    <p>Entérate de los eventos y actualizaciones más importantes de ODAPAS Chalco</p>
+  </div>
+
+  <div class="news-container">
+
+    <!-- Noticia 1 -->
+    <div class="news-block">
+      <div class="news-img">
+        <img src="./imagenes/obra.jpeg" alt="Obra en San Mateo">
+      </div>
+      <div class="news-text">
+        <h4>🚧 Nueva obra en San Mateo Huitzilzingo</h4>
+        <p>ODAPAS Chalco comenzó la construcción de una nueva red de agua potable. Se instalarán más de 2 km de tubería, beneficiando a más de 1,500 familias de la comunidad.</p>
+      </div>
+    </div>
+
+    <!-- Noticia 2 -->
+    <div class="news-block">
+      <div class="news-img">
+        <img src="./imagenes/buenfin.jpeg" alt="Descuentos Buen Fin">
+      </div>
+      <div class="news-text">
+        <h4>💳 Campaña de pago anticipado 2025</h4>
+        <p>Aprovecha descuentos del 10% por pago anticipado de tu servicio. Vigencia del 1 al 31 de julio en nuestras oficinas. ¡No pierdas la oportunidad!</p>
+      </div>
+    </div>
+
+    <!-- Noticia 3 -->
+    <div class="news-block">
+      <div class="news-img">
+        <img src="./imagenes/potable.jpeg" alt="Mantenimiento en pozos">
+      </div>
+      <div class="news-text">
+        <h4>🔧 Mantenimiento en pozos de agua</h4>
+        <p>Durante el mes de junio realizaremos labores de mantenimiento en 4 pozos principales para asegurar la calidad del servicio en todo el municipio.</p>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="./index.html" class="btn btn-back px-4 py-2">← Regresar al Inicio</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 ODAPAS Chalco.
+  </footer>
+
+</body>
+</html>

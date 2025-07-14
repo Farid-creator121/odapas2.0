@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trámites y Servicios - ODAPAS Chalco</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<style>
+  body { background: #f4f9ff; font-family: 'Segoe UI', sans-serif; }
+  .header { background: #003366; color: white; text-align:center; padding:40px 10px; }
+  .section-title { color: #003366; font-weight:bold; margin:30px 0 20px; }
+  .card { border:none; border-radius:15px; box-shadow:0 2px 8px rgba(0,0,0,0.1); margin-bottom:20px; }
+  .btn-wsp { background:#0056b3; color:white; border:none; border-radius:20px; padding:6px 12px; font-size:0.9rem; margin-top:10px; text-decoration:none; display:inline-block; }
+  .btn-wsp:hover { background:#00408a; }
+  .btn-fixed { position:fixed; bottom:20px; left:20px; background:#003366; color:white; border-radius:30px; padding:10px 18px; text-decoration:none; font-weight:bold; font-size:0.9rem; box-shadow:0 2px 10px rgba(0,0,0,0.3); z-index:1000; }
+  .btn-fixed:hover { background:#002244; }
+  footer { background:#003366; color:white; text-align:center; padding:20px; margin-top:40px; }
+  .price { font-weight:bold; color:#333; }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Trámites y Servicios</h1>
+    <p>ODAPAS Chalco</p>
+  </div>
+
+  <div class="container my-5">
+    <h3 class="section-title"></h3>
+    <div id="tramites-container"></div>
+  </div>
+
+  <a href="index.html" class="btn-fixed">← Inicio</a>
+
+  <footer>© 2025 ODAPAS Chalco. </footer>
+
+<script>
+const tramites = [
+  { titulo:"Atención Ciudadana", tipo:"Servicio", icon:"fas fa-headset", descripcion:"Canal para reportes ciudadana sobre servicio.", precio:"Gratuito", mensaje:"Buen día, mi nombre es [Nombre completo]. Deseo reportar una situación relacionada al servicio de agua o drenaje en la colonia [Nombre]. ¿Podrían ayudarme y orientarme?" },  
+  { titulo:"Pago de Agua", tipo:"Trámite", icon:"fas fa-hand-holding-water", descripcion:"Pago de cuota bimestral o anual por agua potable y drenaje.", precio:"$113.72 MXN (anual doméstico)", mensaje:"Buen día, mi nombre es [Nombre completo]. Deseo realizar el pago del servicio de agua potable y drenaje de mi predio ubicado en [Dirección o número de cuenta]. ¿Me podrían indicar los pasos y métodos de pago disponibles?" },
+  { titulo:"Cambio de Propietario", tipo:"Trámite", icon:"fas fa-user-edit", descripcion:"Actualización de titular en padrón por cambio de propiedad.", precio:"$271.58 MXN (doméstico)", mensaje:"Buen día, mi nombre es [Nombre completo]. Quiero realizar el trámite de cambio de propietario para el predio ubicado en [Dirección]. ¿Podrían informarme requisitos y procedimiento?" },
+  { titulo:"Certificado de No Adeudo", tipo:"Trámite", icon:"fas fa-file-certificate", descripcion:"Constancia de que no existen adeudos.", precio:"$116.03 MXN (doméstico)", mensaje:"Buen día, mi nombre es [Nombre completo]. Solicito un certificado de no adeudo para el inmueble ubicado en [Dirección / cuenta]. ¿Me podrían indicar requisitos y tiempos?" },
+  { titulo:"Bonificación a Grupos Vulnerables", tipo:"Trámite", icon:"fas fa-hands-helping", descripcion:"Descuentos para grupos vulnerables en pago de servicios.", precio:"Gratuito", mensaje:"Buen día, mi nombre es [Nombre completo]. Requiero información sobre la bonificación para grupos vulnerables en mi cuenta de servicio ubicada en [Dirección]. ¿Cuáles son los requisitos y pasos?" },
+  { titulo:"Conexión de Toma de Agua o Drenaje", tipo:"Trámite", icon:"fas fa-water", descripcion:"Alta de toma de agua o drenaje para un predio.", precio:"$1,652.80 MXN", mensaje:"Buen día, mi nombre es [Nombre completo]. Deseo la conexión de agua o drenaje en el predio ubicado en [Dirección]. ¿Podrían informarme requisitos, documentos y costos?" },
+  { titulo:"Instalación de Medidor", tipo:"Trámite", icon:"fas fa-tachometer-alt", descripcion:"Colocación de medidor de consumo en predios.", precio:"$832.74 MXN (doméstico)", mensaje:"Buen día, mi nombre es [Nombre completo]. Quisiera solicitar la instalación de un medidor en el predio ubicado en [Dirección]. ¿Cuáles son los requisitos y costo?" },
+  { titulo:"Verificación de Calidad del Agua", tipo:"Trámite", icon:"fas fa-vials", descripcion:"Análisis de parámetros como pH, sólidos, temperatura.", precio:"Gratuito", mensaje:"Buen día, mi nombre es [Nombre completo]. Solicito la verificación de la calidad del agua en el predio ubicado en [Dirección]. ¿Podrían indicarme procedimiento y tiempo estimado?" },
+  { titulo:"Solicitud de Constancia de Servicios", tipo:"Trámite", icon:"fas fa-file-alt", descripcion:"Constancia de servicios para trámites de construcción.", precio:"$823.58 MXN (doméstico)", mensaje:"Buen día, mi nombre es [Nombre completo]. Necesito una constancia de servicios de agua o drenaje para el inmueble ubicado en [Dirección]. ¿Podrían informarme requisitos y tiempos?" },
+  { titulo:"Derivación de Toma de Agua", tipo:"Trámite", icon:"fas fa-code-branch", descripcion:"Solicita una segunda toma en el mismo predio.", precio:"$625.58 MXN (doméstico) / $957.46 MXN (no doméstico)", mensaje:"Buen día, mi nombre es [Nombre completo]. Deseo la derivación de toma de agua en el predio ubicado en [Dirección]. ¿Me podrían indicar requisitos y costo?" },
+];
+
+const cont = document.getElementById('tramites-container');
+tramites.forEach(t => {
+  const div = document.createElement('div');
+  div.className = 'card p-4';
+  div.innerHTML = `
+    <h5><i class="${t.icon}" style="margin-right:8px;"></i>${t.titulo} <span class="badge ${t.tipo==='Trámite'?'bg-success':'bg-primary'}">${t.tipo}</span></h5>
+    <p>${t.descripcion}</p>
+    <p class="price">Costo: ${t.precio}</p>
+    <a class="btn-wsp" target="_blank" href="https://wa.me/5215620186834?text=${encodeURIComponent(t.mensaje)}">WhatsApp</a>
+  `;
+  cont.appendChild(div);
+});
+</script>
+</body>
+</html>
